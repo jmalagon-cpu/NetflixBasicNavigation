@@ -15,7 +15,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -33,7 +32,7 @@ import me.fabiansuarez.compose.lab.netflixbasicnavigation.ui.theme.*
     showBackground = true,
 )
 @Composable
-fun RegisterStep3Screen() {
+fun RegisterStep3Screen(onFinishClick: () -> Unit = {}) {
     val scrollState = rememberScrollState()
     var selectedPayment by remember { mutableStateOf(PaymentMethod.CARD) }
 
@@ -157,7 +156,7 @@ fun RegisterStep3Screen() {
 
                 // ── Start membership button ──────────────────────────────────
                 Button(
-                    onClick = {},
+                    onClick = { onFinishClick() },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(54.dp),

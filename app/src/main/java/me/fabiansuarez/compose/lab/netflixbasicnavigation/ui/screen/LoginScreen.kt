@@ -1,7 +1,6 @@
 package me.fabiansuarez.compose.lab.netflixbasicnavigation.ui.screen
 
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -15,10 +14,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -37,7 +32,10 @@ import me.fabiansuarez.compose.lab.netflixbasicnavigation.ui.theme.*
     showSystemUi = true
 )
 @Composable
-fun LoginScreen() {
+fun LoginScreen(
+    onNavigateToRegister: () -> Unit = {},
+    onNavigateToHome: () -> Unit = {}
+) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -129,7 +127,7 @@ fun LoginScreen() {
 
                 // ── Sign in button ───────────────────────────────────────────
                 Button(
-                    onClick = { },
+                    onClick = { onNavigateToHome() },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(50.dp),
@@ -245,7 +243,7 @@ fun LoginScreen() {
                         color = NetflixWhite,
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Medium,
-                        modifier = Modifier.clickable { }
+                        modifier = Modifier.clickable { onNavigateToRegister() }
                     )
                 }
             }
